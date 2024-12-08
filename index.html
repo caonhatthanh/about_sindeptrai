@@ -37,14 +37,22 @@
     </div>
     <div id="blurred-box">
         <img src="./assets/pfp/default.jpg" alt="Profile Picture"> <!-- Profile picture -->
-        <p id="username" style="color: white; font-weight: bold; font-size: large;">sikawanonka.</p> <!-- Username -->
+        <!-- Username -->
+        <p id="username" style="color: white; font-weight: bold; font-size: large;">
+            <a href="javascript:void(0);" onclick="showCustomPopup()" style="color: white; text-decoration: none;">
+                sikawanonka.
+            </a>
+        </p>
+
         <!-- User Description -->
         <div class="user-description">
             <p id="user-description" style="color: white;">Ruby is my life ❤️ </p>
         </div>
+
         <div class="links">
-            <a href="https://soundcloud.com/sikawanonka" target="_blank">
-                <i class="fab fa-soundcloud"></i>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=shophackgaming@gmail.com&su=Tiêu%20Đề&body=Nội%20Dung%20Bạn%20Muốn%20Gửi!"
+               target="_blank">
+                <i class="fas fa-envelope"></i>
             </a>
             <a href="https://github.com/caonhatthanh" target="_blank">
                 <i class="fab fa-github"></i>
@@ -53,21 +61,41 @@
                 <i class="fa-solid fa-credit-card"></i>
             </a>
         </div>
+    </div>
 
-        <!-- Popup thông báo -->
-        <div id="popup" class="popup">
-            <div class="popup-content">
-                <h2 class="popup-title">
-                    <i class="fa-solid fa-credit-card"></i> Thông Tin Chuyển Khoản
-                </h2>
-                <div class="popup-details">
-                    <p><i class="fa-brands fa-cc-visa"></i> MBBANK: 0384557275</p>
-                    <p><i class="fa-brands fa-cc-mastercard"></i> MOMO: 0384557275</p>
-                    <p><i class="fa-brands fa-paypal"></i> TSR: 0384557275</p>
-                </div>
-                <button id="close-popup" class="close-btn">Đóng</button>
+    <!-- Custom Popup Modal -->
+    <div id="custom-popup" class="custom-popup">
+        <div class="custom-popup-content">
+            <!-- Dấu X đóng popup -->
+            <span class="custom-close-btn" onclick="closeCustomPopup()">&times;</span>
+
+            <p>Bạn sẽ được chuyển hướng đến ứng dụng Discord để kết bạn với <b>'sikawanonka.'</b> Bạn có muốn tiếp tục?</p>
+
+            <!-- Đặt các nút đồng ý vào một hàng -->
+            <div class="custom-popup-footer">
+                <button onclick="redirectToDiscord()" class="custom-agree-btn">Đồng ý</button>
             </div>
         </div>
+    </div>
+
+    <!-- Popup thông báo -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <h2 class="popup-title">
+                <i class="fa-solid fa-credit-card"></i> Thông Tin Chuyển Khoản
+            </h2>
+            <div class="popup-details">
+                <p><i class="fa-brands fa-cc-visa"></i> MBBANK: 0384557275</p>
+                <p><i class="fa-brands fa-cc-mastercard"></i> MOMO: 0384557275</p>
+                <p><i class="fa-brands fa-paypal"></i> TSR: 0384557275</p>
+            </div>
+            <button id="close-popup" class="close-btn">Đóng</button>
+        </div>
+    </div>
+
+    <div class="view-counter">
+        <img src="https://img.icons8.com/ios-filled/50/null/combo-chart.png" alt="Chart Icon" class="icon">
+        <span id="viewCount">0</span>
     </div>
     <script src="./assets/js/script.js"></script> <!-- Script for functionality -->
     <script src="./assets/js/title.js"></script> <!-- Script for title functionality -->

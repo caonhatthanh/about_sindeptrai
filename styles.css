@@ -334,3 +334,135 @@ body {
 .close-btn:hover {
     background-color: #218c34; /* Màu xanh đậm hơn khi hover */
 }
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.view-counter {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 5px 10px;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.view-counter .icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+#viewCount {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Popup */
+.custom-popup {
+    display: none; /* Ẩn popup mặc định */
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Màu nền mờ */
+}
+
+/* Nội dung popup */
+.custom-popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 300px;  /* Giới hạn chiều rộng */
+    position: relative;
+    font-family: 'Arial', sans-serif;  /* Chọn font dễ đọc */
+    line-height: 1.6;  /* Tăng khoảng cách giữa các dòng để dễ đọc */
+    color: #333; /* Màu chữ tối để dễ đọc trên nền sáng */
+
+    /* Hiệu ứng nảy ra */
+    animation: popupAnimation 0.5s ease-out;
+}
+
+/* Hiệu ứng nảy ra */
+@keyframes popupAnimation {
+    0% {
+        transform: translate(-50%, -50%) scale(0.8);  /* Bắt đầu với kích thước nhỏ hơn */
+        opacity: 0;  /* Bắt đầu với độ trong suốt = 0 */
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);  /* Phóng to một chút */
+        opacity: 1;  /* Độ trong suốt = 1 */
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);  /* Kích thước bình thường */
+        opacity: 1;  /* Đảm bảo popup vẫn hiển thị */
+    }
+}
+
+/* Dấu X để đóng popup */
+.custom-close-btn {
+    color: #aaa;
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+/* Hover cho dấu X */
+.custom-close-btn:hover,
+.custom-close-btn:focus {
+    color: black;
+    text-decoration: none;
+}
+
+/* Đặt các nút đồng ý nằm cùng hàng */
+.custom-popup-footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Nút đồng ý */
+.custom-agree-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 18px;
+    width: 100%;  /* Chiếm toàn bộ chiều rộng */
+    transition: background-color 0.3s ease;
+}
+
+/* Hover hiệu ứng cho nút đồng ý */
+.custom-agree-btn:hover {
+    background-color: #45a049;
+}
+
+/* Cải thiện độ dễ đọc của văn bản */
+.custom-popup-content p {
+    font-size: 16px; /* Kích thước chữ dễ đọc */
+    margin-bottom: 15px; /* Khoảng cách giữa các đoạn văn */
+    text-align: center; /* Căn giữa văn bản */
+}
+
+
+

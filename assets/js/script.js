@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Initial terminal text content
     var terminalTextContent = ["Người Dùng: unknown", "IP: Loading...", "System: Loading...", // System information placeholder
-        "Hoàn tất load Bio", "Nhấn Enter để tiếp tục",];
+        "Hoàn Tất Load Bio", "Nhấn Enter Để Tiếp Tục",];
     var currentIndex = 0;
 
     // Pause background video and audio
@@ -251,5 +251,76 @@ closePopup.addEventListener('click', function () {
     popup.style.display = 'none';
 });
 
+// Hàm để lấy hoặc cập nhật số lượt xem từ localStorage
+function updateViewCount() {
+    const viewCountElement = document.getElementById("viewCount");
 
+    // Kiểm tra xem đã có giá trị trong localStorage chưa
+    let viewCount = localStorage.getItem("viewCount");
+
+    if (viewCount === null) {
+        viewCount = 0; // Nếu chưa có thì bắt đầu từ 0
+    } else {
+        viewCount = parseInt(viewCount) + 1; // Tăng thêm 1
+    }
+
+    // Cập nhật lại localStorage
+    localStorage.setItem("viewCount", viewCount);
+
+    // Hiển thị giá trị lên trang
+    viewCountElement.textContent = viewCount;
+}
+
+// Gọi hàm khi trang được tải
+document.addEventListener("DOMContentLoaded", updateViewCount);
+
+// Chờ cho trang web được tải hoàn toàn
+document.addEventListener("DOMContentLoaded", function() {
+
+    // Hiển thị popup
+    function showCustomPopup() {
+        const popup = document.getElementById("custom-popup");
+        if (popup) {
+            popup.style.display = "block";
+        }
+    }
+
+    // Đóng popup
+    function closeCustomPopup() {
+        const popup = document.getElementById("custom-popup");
+        if (popup) {
+            popup.style.display = "none";
+        }
+    }
+
+    // Chuyển hướng đến Discord
+    function redirectToDiscord() {
+        window.location.href = "discord://discordapp.com/users/598704008940486656";
+    }
+
+    // Lắng nghe sự kiện cho nút mở popup (tên "sikawanonka.")
+    const usernameLink = document.querySelector("p#username a");
+    if (usernameLink) {
+        usernameLink.addEventListener("click", function(event) {
+            event.preventDefault();  // Ngừng hành động mặc định của liên kết
+            showCustomPopup();
+        });
+    }
+
+    // Lắng nghe sự kiện cho nút đóng trong popup
+    const closeButtons = document.querySelectorAll(".custom-close-btn");
+    closeButtons.forEach(function(button) {
+        button.addEventListener("click", function(event) {
+            closeCustomPopup();
+        });
+    });
+
+    // Lắng nghe sự kiện cho nút đồng ý trong popup
+    const agreeButton = document.querySelector(".custom-agree-btn");
+    if (agreeButton) {
+        agreeButton.addEventListener("click", function(event) {
+            redirectToDiscord();
+        });
+    }
+});
 
