@@ -251,29 +251,6 @@ closePopup.addEventListener('click', function () {
     popup.style.display = 'none';
 });
 
-// Hàm để lấy hoặc cập nhật số lượt xem từ localStorage
-function updateViewCount() {
-    const viewCountElement = document.getElementById("viewCount");
-
-    // Kiểm tra xem đã có giá trị trong localStorage chưa
-    let viewCount = localStorage.getItem("viewCount");
-
-    if (viewCount === null) {
-        viewCount = 0; // Nếu chưa có thì bắt đầu từ 0
-    } else {
-        viewCount = parseInt(viewCount) + 1; // Tăng thêm 1
-    }
-
-    // Cập nhật lại localStorage
-    localStorage.setItem("viewCount", viewCount);
-
-    // Hiển thị giá trị lên trang
-    viewCountElement.textContent = viewCount;
-}
-
-// Gọi hàm khi trang được tải
-document.addEventListener("DOMContentLoaded", updateViewCount);
-
 // Chờ cho trang web được tải hoàn toàn
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -322,5 +299,37 @@ document.addEventListener("DOMContentLoaded", function() {
             redirectToDiscord();
         });
     }
+});
+
+
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'p') {
+        document.querySelector('.game-overlay').classList.add('active');
+        document.querySelector('.game-popup').classList.add('active');
+    }
+});
+
+document.getElementById('game-accept').addEventListener('click', () => {
+    document.querySelector('.game-popup').classList.remove('active');
+    document.querySelector('.game-overlay').classList.remove('active');
+    document.querySelector('.game-loading').classList.add('active');
+
+    const progressBar = document.getElementById('game-progress-bar');
+    let progress = 0;
+
+    const interval = setInterval(() => {
+        progress += 1;
+        progressBar.value = progress;
+
+        if (progress >= 100) {
+            clearInterval(interval);
+            window.location.href = "../accounts/login.html";
+        }
+    }, 50); // 50ms mỗi bước, tổng cộng 5 giây để hoàn thành
+});
+
+document.getElementById('game-cancel').addEventListener('click', () => {
+    document.querySelector('.game-popup').classList.remove('active');
+    document.querySelector('.game-overlay').classList.remove('active');
 });
 
