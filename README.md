@@ -12,6 +12,6 @@ nếu như bạn muốn post web lên hosting để chạy!!. Cảm ơn rất nh
 ![Xem Trước2](https://i.imgur.com/51A4fyL.png)
 
 ## Cài Đặt
-1. Clone repo:
+1. Bạn có thể sử dụng git để clone theo code bên dưới:
    ```bash
    git clone https://github.com/caonhatthanh/about_sindeptrai.git
